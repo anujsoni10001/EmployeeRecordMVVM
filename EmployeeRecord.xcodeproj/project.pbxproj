@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B12861E2821380B00984FC8 /* Employee+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B12861C2821380B00984FC8 /* Employee+CoreDataClass.swift */; };
+		4B12861F2821380B00984FC8 /* Employee+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B12861D2821380B00984FC8 /* Employee+CoreDataProperties.swift */; };
 		4B30CCE428212BDA00834640 /* EmployeeRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CCE328212BDA00834640 /* EmployeeRecordApp.swift */; };
 		4B30CCE628212BDA00834640 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CCE528212BDA00834640 /* ContentView.swift */; };
 		4B30CCE828212BDD00834640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B30CCE728212BDD00834640 /* Assets.xcassets */; };
 		4B30CCEB28212BDD00834640 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B30CCEA28212BDD00834640 /* Preview Assets.xcassets */; };
 		4B30CCED28212BDD00834640 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CCEC28212BDD00834640 /* Persistence.swift */; };
 		4B30CCF028212BDD00834640 /* EmployeeRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CCEE28212BDD00834640 /* EmployeeRecord.xcdatamodeld */; };
+		4B30CCF728212C7800834640 /* AddEmployeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CCF628212C7800834640 /* AddEmployeeView.swift */; };
+		4B9AB01F28214BB6001F3DE0 /* ValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9AB01E28214BB6001F3DE0 /* ValidationExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B12861C2821380B00984FC8 /* Employee+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Employee+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4B12861D2821380B00984FC8 /* Employee+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Employee+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4B30CCE028212BDA00834640 /* EmployeeRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B30CCE328212BDA00834640 /* EmployeeRecordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeRecordApp.swift; sourceTree = "<group>"; };
 		4B30CCE528212BDA00834640 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -23,6 +29,8 @@
 		4B30CCEA28212BDD00834640 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4B30CCEC28212BDD00834640 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4B30CCEF28212BDD00834640 /* EmployeeRecord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EmployeeRecord.xcdatamodel; sourceTree = "<group>"; };
+		4B30CCF628212C7800834640 /* AddEmployeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmployeeView.swift; sourceTree = "<group>"; };
+		4B9AB01E28214BB6001F3DE0 /* ValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +47,8 @@
 		4B30CCD728212BDA00834640 = {
 			isa = PBXGroup;
 			children = (
+				4B12861C2821380B00984FC8 /* Employee+CoreDataClass.swift */,
+				4B12861D2821380B00984FC8 /* Employee+CoreDataProperties.swift */,
 				4B30CCE228212BDA00834640 /* EmployeeRecord */,
 				4B30CCE128212BDA00834640 /* Products */,
 			);
@@ -55,8 +65,8 @@
 		4B30CCE228212BDA00834640 /* EmployeeRecord */ = {
 			isa = PBXGroup;
 			children = (
-				4B30CCE328212BDA00834640 /* EmployeeRecordApp.swift */,
-				4B30CCE528212BDA00834640 /* ContentView.swift */,
+				4B9AB01D28214B92001F3DE0 /* Extension */,
+				4B30CCF828212CC100834640 /* View */,
 				4B30CCE728212BDD00834640 /* Assets.xcassets */,
 				4B30CCEC28212BDD00834640 /* Persistence.swift */,
 				4B30CCEE28212BDD00834640 /* EmployeeRecord.xcdatamodeld */,
@@ -71,6 +81,24 @@
 				4B30CCEA28212BDD00834640 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4B30CCF828212CC100834640 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4B30CCE328212BDA00834640 /* EmployeeRecordApp.swift */,
+				4B30CCE528212BDA00834640 /* ContentView.swift */,
+				4B30CCF628212C7800834640 /* AddEmployeeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4B9AB01D28214B92001F3DE0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4B9AB01E28214BB6001F3DE0 /* ValidationExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,9 +172,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B30CCED28212BDD00834640 /* Persistence.swift in Sources */,
+				4B12861E2821380B00984FC8 /* Employee+CoreDataClass.swift in Sources */,
+				4B30CCF728212C7800834640 /* AddEmployeeView.swift in Sources */,
 				4B30CCE628212BDA00834640 /* ContentView.swift in Sources */,
+				4B9AB01F28214BB6001F3DE0 /* ValidationExtension.swift in Sources */,
 				4B30CCF028212BDD00834640 /* EmployeeRecord.xcdatamodeld in Sources */,
 				4B30CCE428212BDA00834640 /* EmployeeRecordApp.swift in Sources */,
+				4B12861F2821380B00984FC8 /* Employee+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
