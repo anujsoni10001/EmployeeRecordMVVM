@@ -21,7 +21,7 @@ extension Employee {
     @NSManaged public var id: UUID?
     @NSManaged public var mobileno: String?
     @NSManaged public var name: String?
-
+    @NSManaged public var type: String?
 }
 
 extension Employee : Identifiable {

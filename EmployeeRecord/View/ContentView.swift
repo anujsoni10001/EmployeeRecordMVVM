@@ -11,13 +11,22 @@ import CoreData
 struct ContentView: View {
 
 @Environment(\.managedObjectContext) var managedObjectContext
+
+@FetchRequest(entity: Employee.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Employee.name, ascending: true)]) var employees: FetchedResults<Employee>
+    
 @State private var showingAddEmployeeView:Bool = false
     
 var body: some View {
     
     NavigationView{
-      List(0 ..< 5) { item in
-            Text("Hello")
+      List{
+          ForEach(self.employees,id:\.self){item in
+              HStack{
+              Text(item.type ?? "Unknown")
+              
+              Spacer()
+              }
+        }
      }
     .navigationBarItems(trailing:
           Button{
@@ -39,3 +48,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

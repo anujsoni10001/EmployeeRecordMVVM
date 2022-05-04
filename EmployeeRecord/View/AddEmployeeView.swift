@@ -7,10 +7,18 @@
 
 import SwiftUI
 
+enum EmployeeType: String, CaseIterable, Identifiable {
+    case parttime,fulltime,seasonal,temporary,leased
+    var id: Self { self }
+}
+
 struct AddEmployeeView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
+    
+    
+    
     @State private var name:String = ""
     @State private var gender:String = "Male"
     @State private var mobileno:String = ""
@@ -18,6 +26,8 @@ struct AddEmployeeView: View {
     //@State private var desgination:String = ""
     //@State private var worksat:String = ""
     //@State private var location:String = ""
+    
+    @State private var selectedEmployeeType: EmployeeType = .fulltime
     
     @State private var errorShowing:Bool = false
     @State private var errorTitle:String = ""
@@ -48,6 +58,13 @@ struct AddEmployeeView: View {
         // MARK: - Employee Email Address
         TextField( "Email",text: $email)
                 .keyboardType(.emailAddress)
+        
+        // MARK: - Employee Type
+        Picker("Type",selection: $selectedEmployeeType) {
+           ForEach(EmployeeType.allCases) { item in
+                Text(item.rawValue.capitalized)
+           }
+        }
             
         Button{
             if self.name != ""{
@@ -71,6 +88,7 @@ struct AddEmployeeView: View {
             employee.gender = self.gender
             employee.mobileno = self.mobileno
             employee.email = self.email
+            employee.type = self.selectedEmployeeType.rawValue.capitalized
                 
             do{
             try self.managedObjectContext.save()
