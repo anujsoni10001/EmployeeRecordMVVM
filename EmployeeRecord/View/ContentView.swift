@@ -19,32 +19,38 @@ struct ContentView: View {
 var body: some View {
     
     NavigationView{
-      List{
-          ForEach(self.employees,id:\.self){item in
-              HStack{
-              Text(item.name ?? "Unknown")
-              
-              Spacer()
+        ZStack {
+            List{
+              ForEach(self.employees,id:\.self){item in
+                  HStack{
+                  Text(item.name ?? "Unknown")
                   
-              Text(item.type ?? "Unknown")
-              }
-        }
-        .onDelete(perform:deleteEmployee)
-     }
+                  Spacer()
+                      
+                  Text(item.type ?? "Unknown")
+                  }
+            }
+            .onDelete(perform:deleteEmployee)
+         }
 
-      .navigationBarItems(leading:EditButton(),trailing:
-          Button{
-              showingAddEmployeeView.toggle()
-          } label: {
-              Image(systemName:"plus")
+          .navigationBarItems(leading:EditButton(),trailing:
+              Button{
+                  showingAddEmployeeView.toggle()
+              } label: {
+                  Image(systemName:"plus")
+              }
+              .sheet(isPresented:$showingAddEmployeeView){
+                  AddEmployeeView().environment(\.managedObjectContext,self.managedObjectContext)
+              }
+          )
+         .navigationTitle("Employee")
+         .navigationBarTitleDisplayMode(.inline)
+        
+          if employees.count == 0{
+              EmptyListView()
           }
-          .sheet(isPresented:$showingAddEmployeeView){
-              AddEmployeeView().environment(\.managedObjectContext,self.managedObjectContext)
-          }
-      )
-     .navigationTitle("Employee")
-     .navigationBarTitleDisplayMode(.inline)
-  }
+        }//ZStack
+  }//Navigation
 }
     
 // MARK: - funtions
