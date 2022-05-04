@@ -29,8 +29,10 @@ var body: some View {
               Text(item.type ?? "Unknown")
               }
         }
+        .onDelete(perform:deleteEmployee)
      }
-    .navigationBarItems(trailing:
+
+      .navigationBarItems(leading:EditButton(),trailing:
           Button{
               showingAddEmployeeView.toggle()
           } label: {
@@ -44,12 +46,28 @@ var body: some View {
      .navigationBarTitleDisplayMode(.inline)
   }
 }
+    
+// MARK: - funtions
+
+private func deleteEmployee(at offsets:IndexSet){
+    for index in offsets{
+        let employee = employees[index]
+        managedObjectContext.delete(employee)
+        do{
+            try self.managedObjectContext.save()
+        }
+        catch{
+            print(error)
+        }
+    }
+}
+
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
 
 
