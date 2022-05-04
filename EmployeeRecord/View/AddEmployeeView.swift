@@ -51,10 +51,27 @@ struct AddEmployeeView: View {
             
         Button{
             if self.name != ""{
+            
+            if !mobileno.isValidPhone{
+            errorShowing = true
+            errorTitle = "Invalid Mobile Number"
+            errorMessage = "Make sure to enter correct Mobile\nNumber for new Employee Record."
+            return
+            }
+            
+            if !email.isValidEmail{
+            errorShowing = true
+            errorTitle = "Invalid EmailId"
+            errorMessage = "Make sure to enter correct Email\nId for new Employee Record."
+            return
+            }
+                
             let employee = Employee(context:self.managedObjectContext)
             employee.name = self.name
             employee.gender = self.gender
-            
+            employee.mobileno = self.mobileno
+            employee.email = self.email
+                
             do{
             try self.managedObjectContext.save()
             }
