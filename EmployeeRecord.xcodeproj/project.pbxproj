@@ -17,6 +17,7 @@
 		4B30CCF028212BDD00834640 /* EmployeeRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CCEE28212BDD00834640 /* EmployeeRecord.xcdatamodeld */; };
 		4B30CCF728212C7800834640 /* AddEmployeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CCF628212C7800834640 /* AddEmployeeView.swift */; };
 		4B9AB01F28214BB6001F3DE0 /* ValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9AB01E28214BB6001F3DE0 /* ValidationExtension.swift */; };
+		4BA7345F28224F310069E272 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BA7345E28224F310069E272 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		4B30CCEF28212BDD00834640 /* EmployeeRecord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EmployeeRecord.xcdatamodel; sourceTree = "<group>"; };
 		4B30CCF628212C7800834640 /* AddEmployeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmployeeView.swift; sourceTree = "<group>"; };
 		4B9AB01E28214BB6001F3DE0 /* ValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationExtension.swift; sourceTree = "<group>"; };
+		4BA7345E28224F310069E272 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		4BA73460282251380069E272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,7 @@
 		4B30CCE228212BDA00834640 /* EmployeeRecord */ = {
 			isa = PBXGroup;
 			children = (
+				4BA73460282251380069E272 /* Info.plist */,
 				4B9AB01D28214B92001F3DE0 /* Extension */,
 				4B30CCF828212CC100834640 /* View */,
 				4B30CCE728212BDD00834640 /* Assets.xcassets */,
@@ -89,6 +93,7 @@
 				4B30CCE328212BDA00834640 /* EmployeeRecordApp.swift */,
 				4B30CCE528212BDA00834640 /* ContentView.swift */,
 				4B30CCF628212C7800834640 /* AddEmployeeView.swift */,
+				4BA7345E28224F310069E272 /* Launch Screen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BA7345F28224F310069E272 /* Launch Screen.storyboard in Resources */,
 				4B30CCEB28212BDD00834640 /* Preview Assets.xcassets in Resources */,
 				4B30CCE828212BDD00834640 /* Assets.xcassets in Resources */,
 			);
@@ -310,9 +316,11 @@
 				DEVELOPMENT_TEAM = D49ACZH93P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EmployeeRecord/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -340,9 +348,11 @@
 				DEVELOPMENT_TEAM = D49ACZH93P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EmployeeRecord/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
