@@ -22,9 +22,11 @@ var body: some View {
       List{
           ForEach(self.employees,id:\.self){item in
               HStack{
-              Text(item.type ?? "Unknown")
+              Text(item.name ?? "Unknown")
               
               Spacer()
+                  
+              Text(item.type ?? "Unknown")
               }
         }
      }
@@ -45,7 +47,9 @@ var body: some View {
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        
+        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
 
