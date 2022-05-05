@@ -17,7 +17,7 @@ struct AddEmployeeView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     
-    
+    @State private var changePicker:Bool = false
     
     @State private var name:String = ""
     @State private var gender:String = "Male"
@@ -87,9 +87,11 @@ struct AddEmployeeView: View {
                     ForEach(EmployeeType.allCases) { value in
                         Text(value.rawValue.capitalized)
                             .tag(value)
-                            .font(.largeTitle)
                     }
                 } label: {}
+                .onChange(of: selectedEmployeeType) { tag in
+                    changePicker = true
+                }
             } label: {
                Text(selectedEmployeeType.rawValue.capitalized)
                     .font(.system(size:24, weight:.bold, design:.default))
@@ -97,7 +99,7 @@ struct AddEmployeeView: View {
                     .frame(minWidth: 0, maxWidth:.infinity,alignment:.leading)
                     .background(Color(UIColor.tertiarySystemFill))
                     .cornerRadius(9)
-                    .foregroundColor(Color("ColorText"))
+                    .foregroundColor(changePicker ? Color("ColorPicker") : Color("ColorText"))
             }
             
         Button{

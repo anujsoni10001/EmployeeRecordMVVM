@@ -15,6 +15,7 @@ struct ContentView: View {
 @FetchRequest(entity: Employee.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Employee.name, ascending: true)]) var employees: FetchedResults<Employee>
     
 @State private var showingAddEmployeeView:Bool = false
+@State private var animatingButton:Bool = false
     
 var body: some View {
     
@@ -50,6 +51,42 @@ var body: some View {
               EmptyListView()
           }
         }//ZStack
+        .overlay(
+            ZStack
+            {
+                
+            Group{
+            Circle()
+            .fill(Color.blue)
+            .opacity(animatingButton ? 0.2 : 0)
+            .scaleEffect(animatingButton ? 1 : 0)
+            .frame(width: 68, height: 68, alignment:.center)
+            Circle()
+            .fill(Color.blue)
+            .opacity(animatingButton ? 0.15 : 0)
+            .scaleEffect(self.animatingButton ? 1 : 0)
+            .frame(width: 88, height: 88, alignment:.center)
+            }
+            //.animation(.easeInOut(duration:2).repeatForever(autoreverses:true))
+                
+            Button{
+                showingAddEmployeeView.toggle()
+            } label: {
+                Image(systemName:"plus.circle.fill")
+                .resizable()
+                .scaledToFit()
+                .background(Circle().fill(Color("ColorBase")))
+                .frame(width:48, height: 48, alignment: .center)
+            }.onAppear(){
+            withAnimation(.easeInOut(duration:2).repeatForever(autoreverses:true)){
+            animatingButton.toggle()
+            }
+            }
+            }
+            .padding(.bottom,15)
+            .padding(.trailing,15)
+            ,alignment:.bottomTrailing
+        )
   }//Navigation
 }
     
@@ -74,6 +111,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
 
 
 
