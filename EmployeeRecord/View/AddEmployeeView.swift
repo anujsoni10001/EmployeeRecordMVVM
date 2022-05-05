@@ -99,7 +99,7 @@ struct AddEmployeeView: View {
                     .frame(minWidth: 0, maxWidth:.infinity,alignment:.leading)
                     .background(Color(UIColor.tertiarySystemFill))
                     .cornerRadius(9)
-                    .foregroundColor(changePicker ? Color("ColorPicker") : Color("ColorText"))
+                    .foregroundColor(changePicker ? Color.primary : Color("ColorText"))
             }
             
         Button{
