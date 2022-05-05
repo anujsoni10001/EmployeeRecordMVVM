@@ -38,10 +38,19 @@ struct AddEmployeeView: View {
     var body: some View {
         NavigationView{
         VStack{
-        Form{
+        //Form tag is used to make a prototype for
+        //building an app , after when desgining UI we can replace
+        //it with a VStack
+        //Form{
+        VStack(alignment:.leading, spacing:20) {
         // MARK: - Employee Name
         TextField( "Employee", text: $name)
+                .padding()
+                .background(Color(UIColor.tertiarySystemFill))
+                .cornerRadius(9)
+                .font(.system(size:24, weight:.bold, design:.default))
                 .keyboardType(.namePhonePad)
+            
         
         // MARK: - Employee Gender
         Picker(  "Gender",selection:$gender){
@@ -53,18 +62,43 @@ struct AddEmployeeView: View {
          
         // MARK: - Employee Mobile Number
         TextField( "Mobile",text: $mobileno)
+                .padding()
+                .background(Color(UIColor.tertiarySystemFill))
+                .cornerRadius(9)
+                .font(.system(size:24, weight:.bold, design:.default))
                 .keyboardType(.phonePad)
             
         // MARK: - Employee Email Address
         TextField( "Email",text: $email)
+                .padding()
+                .background(Color(UIColor.tertiarySystemFill))
+                .cornerRadius(9)
+                .font(.system(size:24, weight:.bold, design:.default))
                 .keyboardType(.emailAddress)
         
         // MARK: - Employee Type
-        Picker("Type",selection: $selectedEmployeeType) {
-           ForEach(EmployeeType.allCases) { item in
-                Text(item.rawValue.capitalized)
-           }
-        }
+//        Picker("Type",selection: $selectedEmployeeType) {
+//           ForEach(EmployeeType.allCases) { item in
+//               Text(item.rawValue.capitalized)
+//           }
+//        }
+            Menu {
+                Picker(selection: $selectedEmployeeType) {
+                    ForEach(EmployeeType.allCases) { value in
+                        Text(value.rawValue.capitalized)
+                            .tag(value)
+                            .font(.largeTitle)
+                    }
+                } label: {}
+            } label: {
+               Text(selectedEmployeeType.rawValue.capitalized)
+                    .font(.system(size:24, weight:.bold, design:.default))
+                    .padding()
+                    .frame(minWidth: 0, maxWidth:.infinity,alignment:.leading)
+                    .background(Color(UIColor.tertiarySystemFill))
+                    .cornerRadius(9)
+                    .foregroundColor(Color("ColorText"))
+            }
             
         Button{
             if self.name != ""{
@@ -105,8 +139,16 @@ struct AddEmployeeView: View {
             self.presentationMode.wrappedValue.dismiss()
         } label: {
         Text("Add")
+        .font(.system(size:24, weight:.bold, design:.default))
+        .padding()
+        .frame(minWidth: 0, maxWidth:.infinity)
+        .background(Color.blue)
+        .cornerRadius(9)
+        .foregroundColor(Color.white)
         }
         }
+        .padding(.horizontal)
+        .padding(.vertical,30)
         
         Spacer()
         }
@@ -129,7 +171,6 @@ struct AddEmployeeView_Previews: PreviewProvider {
         AddEmployeeView()
     }
 }
-
 
 
 
