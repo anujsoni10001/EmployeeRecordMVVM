@@ -17,6 +17,9 @@
 		4B30CCED28212BDD00834640 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CCEC28212BDD00834640 /* Persistence.swift */; };
 		4B30CCF028212BDD00834640 /* EmployeeRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CCEE28212BDD00834640 /* EmployeeRecord.xcdatamodeld */; };
 		4B30CCF728212C7800834640 /* AddEmployeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CCF628212C7800834640 /* AddEmployeeView.swift */; };
+		4B4936CC2826113A006CA601 /* FormRowLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4936CB2826113A006CA601 /* FormRowLinkView.swift */; };
+		4B67B38D2824E55C00CF06A2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67B38C2824E55B00CF06A2 /* SettingsView.swift */; };
+		4B67B38F2824F00F00CF06A2 /* FormRowStaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67B38E2824F00E00CF06A2 /* FormRowStaticView.swift */; };
 		4B9AB01F28214BB6001F3DE0 /* ValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9AB01E28214BB6001F3DE0 /* ValidationExtension.swift */; };
 		4BA7345F28224F310069E272 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BA7345E28224F310069E272 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
@@ -33,6 +36,9 @@
 		4B30CCEC28212BDD00834640 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4B30CCEF28212BDD00834640 /* EmployeeRecord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EmployeeRecord.xcdatamodel; sourceTree = "<group>"; };
 		4B30CCF628212C7800834640 /* AddEmployeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmployeeView.swift; sourceTree = "<group>"; };
+		4B4936CB2826113A006CA601 /* FormRowLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowLinkView.swift; sourceTree = "<group>"; };
+		4B67B38C2824E55B00CF06A2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4B67B38E2824F00E00CF06A2 /* FormRowStaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowStaticView.swift; sourceTree = "<group>"; };
 		4B9AB01E28214BB6001F3DE0 /* ValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationExtension.swift; sourceTree = "<group>"; };
 		4BA7345E28224F310069E272 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4BA73460282251380069E272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +103,9 @@
 				4B30CCF628212C7800834640 /* AddEmployeeView.swift */,
 				4BA7345E28224F310069E272 /* Launch Screen.storyboard */,
 				4B1890A3282278AA00BD3D10 /* EmptyListView.swift */,
+				4B67B38C2824E55B00CF06A2 /* SettingsView.swift */,
+				4B67B38E2824F00E00CF06A2 /* FormRowStaticView.swift */,
+				4B4936CB2826113A006CA601 /* FormRowLinkView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,11 +193,14 @@
 				4B1890A4282278AA00BD3D10 /* EmptyListView.swift in Sources */,
 				4B12861E2821380B00984FC8 /* Employee+CoreDataClass.swift in Sources */,
 				4B30CCF728212C7800834640 /* AddEmployeeView.swift in Sources */,
+				4B67B38F2824F00F00CF06A2 /* FormRowStaticView.swift in Sources */,
+				4B4936CC2826113A006CA601 /* FormRowLinkView.swift in Sources */,
 				4B30CCE628212BDA00834640 /* ContentView.swift in Sources */,
 				4B9AB01F28214BB6001F3DE0 /* ValidationExtension.swift in Sources */,
 				4B30CCF028212BDD00834640 /* EmployeeRecord.xcdatamodeld in Sources */,
 				4B30CCE428212BDA00834640 /* EmployeeRecordApp.swift in Sources */,
 				4B12861F2821380B00984FC8 /* Employee+CoreDataProperties.swift in Sources */,
+				4B67B38D2824E55C00CF06A2 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +340,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -360,6 +373,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

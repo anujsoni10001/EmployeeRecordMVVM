@@ -13,7 +13,8 @@ struct ContentView: View {
 @Environment(\.managedObjectContext) var managedObjectContext
 
 @FetchRequest(entity: Employee.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Employee.name, ascending: true)]) var employees: FetchedResults<Employee>
-    
+
+@State private var showingSettingsView:Bool = false
 @State private var showingAddEmployeeView:Bool = false
 @State private var animatingButton:Bool = false
     
@@ -23,26 +24,44 @@ var body: some View {
         ZStack {
             List{
               ForEach(self.employees,id:\.self){item in
-                  HStack{
-                  Text(item.name ?? "Unknown")
                   
+                  HStack{
+                  Circle()
+                  .frame(width: 12, height: 12, alignment: .center)
+                  .foregroundColor(self.colorize(type: item.type ?? "Unknown"))
+                  Text(item.name ?? "Unknown")
+                  .fontWeight(.semibold)
+                      
                   Spacer()
                       
-                  Text(item.type ?? "Unknown")
+                   Text(item.type ?? "Unknown")
+                  .font(.footnote)
+                  .foregroundColor(Color(UIColor.systemGray2))
+                  .padding(3)
+                  .frame(minWidth: 85)
+                  .overlay(
+                   Capsule().stroke(Color(UIColor.systemGray2), lineWidth: 0.75)
+                  )
                   }
+                  .padding(.vertical, 10)
             }
             .onDelete(perform:deleteEmployee)
-         }
-
+        }
+            
+            
           .navigationBarItems(leading:EditButton(),trailing:
               Button{
-                  showingAddEmployeeView.toggle()
+              showingSettingsView.toggle()
               } label: {
-                  Image(systemName:"plus")
+                  Image(systemName:"paintbrush")
+                  .imageScale(.large)
               }
-              .sheet(isPresented:$showingAddEmployeeView){
-                  AddEmployeeView().environment(\.managedObjectContext,self.managedObjectContext)
-              }
+//              .sheet(isPresented:$showingAddEmployeeView){
+//                  AddEmployeeView().environment(\.managedObjectContext,self.managedObjectContext)
+//              }
+            .sheet(isPresented:$showingSettingsView){
+               SettingsView()
+            }
           )
          .navigationTitle("Employee")
          .navigationBarTitleDisplayMode(.inline)
@@ -104,6 +123,23 @@ private func deleteEmployee(at offsets:IndexSet){
         }
     }
 }
+    
+    private func colorize(type: String) -> Color {
+        switch type {
+        case "fulltime".capitalized:
+            return .green
+        case "parttime".capitalized:
+            return .pink
+        case "seasonal".capitalized:
+            return .yellow
+        case "leased".capitalized:
+            return .blue
+        case "temporary".capitalized:
+            return .orange
+        default:
+            return .gray
+        }
+    }
 
 }
 struct ContentView_Previews: PreviewProvider {
@@ -111,6 +147,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
 
 
 

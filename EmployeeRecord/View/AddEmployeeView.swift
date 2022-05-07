@@ -41,7 +41,7 @@ struct AddEmployeeView: View {
         //Form tag is used to make a prototype for
         //building an app , after when desgining UI we can replace
         //it with a VStack
-        //Form{
+//        Form{
         VStack(alignment:.leading, spacing:20) {
         // MARK: - Employee Name
         TextField( "Employee", text: $name)
