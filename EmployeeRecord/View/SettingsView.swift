@@ -39,6 +39,7 @@ struct SettingsView: View {
             Button{
                 self.theme.themeSettings = item.id
                 UserDefaults.standard.set(self.theme.themeSettings,forKey:"Theme")
+                isThemeChanged.toggle()
             } label: {
                 
                 HStack{
@@ -49,11 +50,6 @@ struct SettingsView: View {
                 }
             }
             .accentColor(Color.primary)
-                
-            }
-            }
-            }
-            .padding(.vertical, 3)
             .alert(isPresented:$isThemeChanged){
                 Alert(
                     title: Text("SUCCESS!"),
@@ -61,6 +57,13 @@ struct SettingsView: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
+            
+                
+            }
+            }
+            }
+            .padding(.vertical, 3)
+            
             // MARK: - SECTION 3
             
             Section(header: Text("Follow us on social media")) {
