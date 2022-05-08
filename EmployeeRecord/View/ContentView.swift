@@ -4,7 +4,6 @@
 //
 //  Created by Anuj Soni on 03/05/22.
 //
-
 import SwiftUI
 import CoreData
 
@@ -17,6 +16,11 @@ struct ContentView: View {
 @State private var showingSettingsView:Bool = false
 @State private var showingAddEmployeeView:Bool = false
 @State private var animatingButton:Bool = false
+
+@ObservedObject var theme = ThemeSettings.shared
+let themes : [Theme] = themeData
+//@ObservedObject var theme = ThemeSettings()
+
     
 var body: some View {
     
@@ -49,7 +53,8 @@ var body: some View {
         }
             
             
-          .navigationBarItems(leading:EditButton(),trailing:
+          .navigationBarItems(leading:EditButton()
+            .accentColor(themes[self.theme.themeSettings].themeColor),trailing:
               Button{
               showingSettingsView.toggle()
               } label: {
@@ -59,6 +64,7 @@ var body: some View {
 //              .sheet(isPresented:$showingAddEmployeeView){
 //                  AddEmployeeView().environment(\.managedObjectContext,self.managedObjectContext)
 //              }
+            .accentColor(themes[self.theme.themeSettings].themeColor)
             .sheet(isPresented:$showingSettingsView){
                SettingsView()
             }
@@ -76,12 +82,12 @@ var body: some View {
                 
             Group{
             Circle()
-            .fill(Color.blue)
+            .fill(themes[self.theme.themeSettings].themeColor)
             .opacity(animatingButton ? 0.2 : 0)
             .scaleEffect(animatingButton ? 1 : 0)
             .frame(width: 68, height: 68, alignment:.center)
             Circle()
-            .fill(Color.blue)
+            .fill(themes[self.theme.themeSettings].themeColor)
             .opacity(animatingButton ? 0.15 : 0)
             .scaleEffect(self.animatingButton ? 1 : 0)
             .frame(width: 88, height: 88, alignment:.center)
@@ -96,7 +102,12 @@ var body: some View {
                 .scaledToFit()
                 .background(Circle().fill(Color("ColorBase")))
                 .frame(width:48, height: 48, alignment: .center)
-            }.onAppear(){
+            }
+            .accentColor(themes[self.theme.themeSettings].themeColor)
+            .sheet(isPresented:$showingAddEmployeeView){
+             AddEmployeeView().environment(\.managedObjectContext,self.managedObjectContext)
+            }
+            .onAppear(){
             withAnimation(.easeInOut(duration:2).repeatForever(autoreverses:true)){
             animatingButton.toggle()
             }
@@ -147,8 +158,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
-
-
-
-
-

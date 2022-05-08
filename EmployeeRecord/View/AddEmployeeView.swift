@@ -35,6 +35,10 @@ struct AddEmployeeView: View {
     
     let genders = ["Male","Female"]
     
+    @ObservedObject var theme = ThemeSettings.shared
+    let themes : [Theme] = themeData
+//    @ObservedObject var theme = ThemeSettings()
+    
     var body: some View {
         NavigationView{
         VStack{
@@ -144,7 +148,7 @@ struct AddEmployeeView: View {
         .font(.system(size:24, weight:.bold, design:.default))
         .padding()
         .frame(minWidth: 0, maxWidth:.infinity)
-        .background(Color.blue)
+        .background(themes[self.theme.themeSettings].themeColor)
         .cornerRadius(9)
         .foregroundColor(Color.white)
         }
@@ -165,6 +169,7 @@ struct AddEmployeeView: View {
             Alert(title: Text(errorTitle), message:Text(errorMessage), dismissButton: .default(Text("OK")))
         }
     }
+        .accentColor(themes[self.theme.themeSettings].themeColor)
 }
 }
 
