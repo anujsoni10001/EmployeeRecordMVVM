@@ -109,14 +109,14 @@ struct AddEmployeeView: View {
         Button{
             if self.name != ""{
             
-            if !mobileno.isValidPhone{
+            guard mobileno.isValidPhone else{
             errorShowing = true
             errorTitle = "Invalid Mobile Number"
             errorMessage = "Make sure to enter correct Mobile\nNumber for new Employee Record."
             return
             }
             
-            if !email.isValidEmail{
+            guard email.isValidEmail else{
             errorShowing = true
             errorTitle = "Invalid EmailId"
             errorMessage = "Make sure to enter correct Email\nId for new Employee Record."
