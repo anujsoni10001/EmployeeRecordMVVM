@@ -118,6 +118,7 @@ var body: some View {
             ,alignment:.bottomTrailing
         )
   }//Navigation
+    .navigationViewStyle(.stack)
 }
     
 // MARK: - funtions

@@ -170,6 +170,7 @@ struct AddEmployeeView: View {
         }
     }
         .accentColor(themes[self.theme.themeSettings].themeColor)
+        .navigationViewStyle(.stack)
 }
 }
 
