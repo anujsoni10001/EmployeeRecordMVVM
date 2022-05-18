@@ -9,9 +9,11 @@ import CoreData
 
 struct ContentView: View {
 
-@Environment(\.managedObjectContext) var managedObjectContext
-
-@FetchRequest(entity: Employee.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Employee.name, ascending: true)]) var employees: FetchedResults<Employee>
+//@StateObject private var employeeVM = EmployeeViewModel()
+@ObservedObject var employeeVM = EmployeeViewModel.shared
+//@Environment(\.managedObjectContext) var managedObjectContext
+//
+//@FetchRequest(entity: Employee.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Employee.name, ascending: true)]) var employees: FetchedResults<Employee>
 
 @State private var showingSettingsView:Bool = false
 @State private var showingAddEmployeeView:Bool = false
@@ -27,7 +29,7 @@ var body: some View {
     NavigationView{
         ZStack {
             List{
-              ForEach(self.employees,id:\.self){item in
+                ForEach(employeeVM.employees,id:\.self){item in
                   
                   HStack{
                   Circle()
@@ -72,7 +74,7 @@ var body: some View {
          .navigationTitle("Employee")
          .navigationBarTitleDisplayMode(.inline)
         
-          if employees.count == 0{
+            if employeeVM.employees.count == 0{
               EmptyListView()
           }
         }//ZStack
@@ -105,9 +107,12 @@ var body: some View {
             }
             .accentColor(themes[self.theme.themeSettings].themeColor)
             .sheet(isPresented:$showingAddEmployeeView){
-             AddEmployeeView().environment(\.managedObjectContext,self.managedObjectContext)
+//             AddEmployeeView().environment(\.managedObjectContext,self.managedObjectContext)
+                
+            AddEmployeeView()
             }
             .onAppear(){
+            employeeVM.getAllEmployees()
             withAnimation(.easeInOut(duration:2).repeatForever(autoreverses:true)){
             animatingButton.toggle()
             }
@@ -124,16 +129,21 @@ var body: some View {
 // MARK: - funtions
 
 private func deleteEmployee(at offsets:IndexSet){
-    for index in offsets{
-        let employee = employees[index]
-        managedObjectContext.delete(employee)
-        do{
-            try self.managedObjectContext.save()
-        }
-        catch{
-            print(error)
-        }
+//    for index in offsets{
+//        let employee = employees[index]
+//        managedObjectContext.delete(employee)
+//        do{
+//            try self.managedObjectContext.save()
+//        }
+//        catch{
+//            print(error)
+//        }
+//    }
+    offsets.forEach{index in
+        let emp = employeeVM.employees[index]
+        employeeVM.delete(emp)
     }
+    employeeVM.getAllEmployees()
 }
     
     private func colorize(type: String) -> Color {
@@ -157,5 +167,7 @@ private func deleteEmployee(at offsets:IndexSet){
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    
     }
 }
+

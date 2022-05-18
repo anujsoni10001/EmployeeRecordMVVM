@@ -21,6 +21,7 @@
 		4B5514AF282676DD00661C0F /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5514AE282676DD00661C0F /* ThemeModel.swift */; };
 		4B5514B12826781400661C0F /* ThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5514B02826781400661C0F /* ThemeData.swift */; };
 		4B5514B328267A5200661C0F /* ThemeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5514B228267A5200661C0F /* ThemeSettings.swift */; };
+		4B56E44F2834ADD5008770FC /* EmployeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B56E44E2834ADD5008770FC /* EmployeeViewModel.swift */; };
 		4B67B38D2824E55C00CF06A2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67B38C2824E55B00CF06A2 /* SettingsView.swift */; };
 		4B67B38F2824F00F00CF06A2 /* FormRowStaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67B38E2824F00E00CF06A2 /* FormRowStaticView.swift */; };
 		4B9AB01F28214BB6001F3DE0 /* ValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9AB01E28214BB6001F3DE0 /* ValidationExtension.swift */; };
@@ -43,6 +44,7 @@
 		4B5514AE282676DD00661C0F /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		4B5514B02826781400661C0F /* ThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeData.swift; sourceTree = "<group>"; };
 		4B5514B228267A5200661C0F /* ThemeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettings.swift; sourceTree = "<group>"; };
+		4B56E44E2834ADD5008770FC /* EmployeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewModel.swift; sourceTree = "<group>"; };
 		4B67B38C2824E55B00CF06A2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4B67B38E2824F00E00CF06A2 /* FormRowStaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowStaticView.swift; sourceTree = "<group>"; };
 		4B9AB01E28214BB6001F3DE0 /* ValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationExtension.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		4B30CCE228212BDA00834640 /* EmployeeRecord */ = {
 			isa = PBXGroup;
 			children = (
+				4B56E44D2834A9DC008770FC /* ViewModel */,
 				4B5514AB2826765700661C0F /* Theme */,
 				4BA73460282251380069E272 /* Info.plist */,
 				4B9AB01D28214B92001F3DE0 /* Extension */,
@@ -125,6 +128,14 @@
 				4B5514B228267A5200661C0F /* ThemeSettings.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		4B56E44D2834A9DC008770FC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4B56E44E2834ADD5008770FC /* EmployeeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		4B9AB01D28214B92001F3DE0 /* Extension */ = {
@@ -220,6 +231,7 @@
 				4B5514B328267A5200661C0F /* ThemeSettings.swift in Sources */,
 				4B30CCE428212BDA00834640 /* EmployeeRecordApp.swift in Sources */,
 				4B12861F2821380B00984FC8 /* Employee+CoreDataProperties.swift in Sources */,
+				4B56E44F2834ADD5008770FC /* EmployeeViewModel.swift in Sources */,
 				4B67B38D2824E55C00CF06A2 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
