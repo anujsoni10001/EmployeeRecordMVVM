@@ -20,7 +20,7 @@ struct AddEmployeeView: View {
 //    @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var changePicker:Bool = false
+//    @State private var changePicker:Bool = false
     
 //    @State private var name:String = ""
 //    @State private var gender:String = "Male"
@@ -31,9 +31,9 @@ struct AddEmployeeView: View {
     //@State private var location:String = ""
 //    @State private var selectedEmployeeType: EmployeeType = .fulltime
     
-    @State private var errorShowing:Bool = false
-    @State private var errorTitle:String = ""
-    @State private var errorMessage:String = ""
+//    @State private var errorShowing:Bool = false
+//    @State private var errorTitle:String = ""
+//    @State private var errorMessage:String = ""
     
     let genders = ["Male","Female"]
     
@@ -96,7 +96,7 @@ struct AddEmployeeView: View {
                     }
                 } label: {}
                     .onChange(of: employeeVM.selectedEmployeeType) { tag in
-                    changePicker = true
+                        employeeVM.changePicker = true
                 }
             } label: {
                 Text(employeeVM.selectedEmployeeType.rawValue.capitalized)
@@ -105,36 +105,37 @@ struct AddEmployeeView: View {
                     .frame(minWidth: 0, maxWidth:.infinity,alignment:.leading)
                     .background(Color(UIColor.tertiarySystemFill))
                     .cornerRadius(9)
-                    .foregroundColor(changePicker ? Color.primary : Color("ColorText"))
+                    .foregroundColor(employeeVM.changePicker ? Color.primary : Color("ColorText"))
             }
             
         Button{
+            
             if employeeVM.name != ""{
             
             guard employeeVM.mobileno.isValidPhone else{
             
-            errorShowing = true
+            employeeVM.errorShowing = true
                 
             if employeeVM.mobileno == "" {
-            errorTitle = "Enter Mobile Number"
-            errorMessage = "Make sure to enter Mobile\nNumber for new Employee Record."
+            employeeVM.errorTitle = "Enter Mobile Number"
+            employeeVM.errorMessage = "Make sure to enter Mobile\nNumber for new Employee Record."
             } else {
-            errorTitle = "Invalid Mobile Number"
-            errorMessage = "Make sure to enter correct Mobile\nNumber for new Employee Record."
+            employeeVM.errorTitle = "Invalid Mobile Number"
+            employeeVM.errorMessage = "Make sure to enter correct Mobile\nNumber for new Employee Record."
             }
             return
             }
             
             guard employeeVM.email.isValidEmail else{
             
-            errorShowing = true
+            employeeVM.errorShowing = true
             
             if employeeVM.email == "" {
-            errorTitle = "Enter EmailId"
-            errorMessage = "Make sure to enter Email\nId for new Employee Record."
+            employeeVM.errorTitle = "Enter EmailId"
+            employeeVM.errorMessage = "Make sure to enter Email\nId for new Employee Record."
             } else {
-            errorTitle = "Invalid EmailId"
-            errorMessage = "Make sure to enter correct Email\nId for new Employee Record."
+            employeeVM.errorTitle = "Invalid EmailId"
+            employeeVM.errorMessage = "Make sure to enter correct Email\nId for new Employee Record."
             }
             return
             }
@@ -156,9 +157,9 @@ struct AddEmployeeView: View {
 //            print(error)
 //            }
             } else{
-                errorShowing = true
-                errorTitle = "Enter Name"
-                errorMessage = "Make sure to enter something for\nthe new Employee Record."
+                employeeVM.errorShowing = true
+                employeeVM.errorTitle = "Enter Name"
+                employeeVM.errorMessage = "Make sure to enter something for\nthe new Employee Record."
                 return
             }
             self.presentationMode.wrappedValue.dismiss()
@@ -184,8 +185,8 @@ struct AddEmployeeView: View {
               } label: {
                   Image(systemName:"xmark")
         })
-        .alert(isPresented: $errorShowing){
-            Alert(title: Text(errorTitle), message:Text(errorMessage), dismissButton: .default(Text("OK")))
+        .alert(isPresented: $employeeVM.errorShowing){
+            Alert(title: Text(employeeVM.errorTitle), message:Text(employeeVM.errorMessage), dismissButton: .default(Text("OK")))
         }
     }
         .accentColor(themes[self.theme.themeSettings].themeColor)

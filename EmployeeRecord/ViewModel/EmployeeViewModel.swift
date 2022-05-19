@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 class EmployeeViewModel:ObservableObject{
     
@@ -18,6 +19,13 @@ public static let shared = EmployeeViewModel()
 @Published var email: String = ""
 @Published var gender: String = "Male"
 @Published var employees:[Employee] = []
+@Published var errorShowing:Bool = false
+@Published var errorTitle:String = ""
+@Published var errorMessage:String = ""
+@Published var changePicker:Bool = false
+@Published var showingSettingsView:Bool = false
+@Published var showingAddEmployeeView:Bool = false
+@Published var animatingButton:Bool = false
     
 func getAllEmployees(){
     employees = PersistenceController.shared.getAllEmployees()
@@ -31,6 +39,15 @@ func save(){
     employee.email = email
     employee.type = selectedEmployeeType.rawValue.capitalized
     PersistenceController.shared.save()
+    resetdata()
+}
+    
+func resetdata(){
+    mobileno = ""
+    name = ""
+    email = ""
+    gender = "Male"
+    changePicker = false
 }
 
 func delete(_ employee:Employee){
