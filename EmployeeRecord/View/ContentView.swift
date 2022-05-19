@@ -15,9 +15,9 @@ struct ContentView: View {
 //
 //@FetchRequest(entity: Employee.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Employee.name, ascending: true)]) var employees: FetchedResults<Employee>
 
-//@State private var showingSettingsView:Bool = false
-//@State private var showingAddEmployeeView:Bool = false
-//@State private var animatingButton:Bool = false
+@State private var showingSettingsView:Bool = false
+@State private var showingAddEmployeeView:Bool = false
+@State private var animatingButton:Bool = false
 
 @ObservedObject var theme = ThemeSettings.shared
 let themes : [Theme] = themeData
@@ -58,7 +58,7 @@ var body: some View {
           .navigationBarItems(leading:EditButton()
             .accentColor(themes[self.theme.themeSettings].themeColor),trailing:
               Button{
-              employeeVM.showingSettingsView.toggle()
+              showingSettingsView.toggle()
               } label: {
                   Image(systemName:"paintbrush")
                   .imageScale(.large)
@@ -67,7 +67,7 @@ var body: some View {
 //                  AddEmployeeView().environment(\.managedObjectContext,self.managedObjectContext)
 //              }
             .accentColor(themes[self.theme.themeSettings].themeColor)
-            .sheet(isPresented:$employeeVM.showingSettingsView){
+            .sheet(isPresented:$showingSettingsView){
                SettingsView()
             }
           )
@@ -85,19 +85,19 @@ var body: some View {
             Group{
             Circle()
             .fill(themes[self.theme.themeSettings].themeColor)
-            .opacity(employeeVM.animatingButton ? 0.2 : 0)
-            .scaleEffect(employeeVM.animatingButton ? 1 : 0)
+            .opacity(animatingButton ? 0.2 : 0)
+            .scaleEffect(animatingButton ? 1 : 0)
             .frame(width: 68, height: 68, alignment:.center)
             Circle()
             .fill(themes[self.theme.themeSettings].themeColor)
-            .opacity(employeeVM.animatingButton ? 0.15 : 0)
-            .scaleEffect(employeeVM.animatingButton ? 1 : 0)
+            .opacity(animatingButton ? 0.15 : 0)
+            .scaleEffect(self.animatingButton ? 1 : 0)
             .frame(width: 88, height: 88, alignment:.center)
             }
             //.animation(.easeInOut(duration:2).repeatForever(autoreverses:true))
                 
             Button{
-                employeeVM.showingAddEmployeeView.toggle()
+                showingAddEmployeeView.toggle()
             } label: {
                 Image(systemName:"plus.circle.fill")
                 .resizable()
@@ -106,7 +106,7 @@ var body: some View {
                 .frame(width:48, height: 48, alignment: .center)
             }
             .accentColor(themes[self.theme.themeSettings].themeColor)
-            .sheet(isPresented:$employeeVM.showingAddEmployeeView){
+            .sheet(isPresented:$showingAddEmployeeView){
 //             AddEmployeeView().environment(\.managedObjectContext,self.managedObjectContext)
                 
             AddEmployeeView()
@@ -114,7 +114,7 @@ var body: some View {
             .onAppear(){
             employeeVM.getAllEmployees()
             withAnimation(.easeInOut(duration:2).repeatForever(autoreverses:true)){
-            employeeVM.animatingButton.toggle()
+            animatingButton.toggle()
             }
             }
             }
